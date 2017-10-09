@@ -11,27 +11,26 @@ mui.plusReady(function() {
 		
 	
 	//由于采用了系统状态栏沉浸效果需要计算系统状态栏的高度
-    var topoffset="45px";
+    var topoffset="45";
     if(plus.navigator.isImmersedStatusbar()){// 兼容immersed状态栏模式
         // 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
-        topoffset=(Math.round(plus.navigator.getStatusbarHeight()))+"px";
+        topoffset=(Math.round(plus.navigator.getStatusbarHeight()));
     }
-	//绘制地区按钮及显示
-	var locationNativeIcon = util.drawNative('location', {
-		top: topoffset,
+    //绘制topbar
+    var topbar_location = util.drawNative('topbar_location', {
+		top: topoffset + 'px',
 		left: '5px',
-		width: '80px',
+		width: '55px',
 		height: '44px',
 		position: 'dock' //此种停靠方式表明该控件应浮在窗口最上层，以免被其他窗口遮住
-
-	}, [{
+	},[{
 		tag: 'font',
-		id: 'locationicontext',
+		id: 'topbar_location_text',
 		text: '重庆',
 		position: {
 			top: '0px',
-			left: '5px',
-			width: '50px',
+			left: '0px',
+			width: '30px',
 			height: '100%'
 		},
 		textStyles: {
@@ -43,126 +42,107 @@ mui.plusReady(function() {
 		}
 	},{
 		tag: 'font',
-		id: 'locationicon',
+		id: 'topbar_location_icon',
 		text: '\ue7a2',
 		position: {
 			top: '0px',
-			left: '50px',
-			width: '20px',
+			left: '30px',
+			width: '25px',
 			height: '100%'
 		},
 		textStyles: {
 			fontSrc: '_www/fonts/iconfont.ttf',
 			align: 'center',
 			color: '#fff',
-			size: '12px'
+			size: '14px',
 		}
 	}]);
-	searchIconwi = window.innerWidth - 200;
-	leftoffset = searchIconwi / 2;
-	//绘制搜索框输入框体
-	var searchNativeBg = util.drawNative('search', {
-		top: topoffset,
-		left: leftoffset,
-		width: searchIconwi + 'px',
+	var wtopbarsearch = window.innerWidth - 120;
+	var topbar_search = util.drawNative('topbar_search', {
+		top: topoffset +'px',
+		left: '60px',
+		right:'60px',
+		width: wtopbarsearch + 'px',
 		height: '44px',
 		position: 'dock' //此种停靠方式表明该控件应浮在窗口最上层，以免被其他窗口遮住
-
-	}, [{
+	},[{
 		tag: 'rect',
-		id: 'searchBg',
+		id: 'topbar_search_rect',
 		position: {
-			top: '8px',
+			top: '25%',
 			left: '0px',
-			width: '100%',
-			height: '28px'
+			width: wtopbarsearch + 'px',
+			height: '50%'
 		},
 		rectStyles: {
+			radius: '50%',
 			color: '#fff',
-			radius: '50%'
 		}
-	}]);
-	//绘制搜索框搜索样式图标
-	var searchNativeIcon = util.drawNative('searchIcon', {
-		top: topoffset,
-		left: (leftoffset + 5 ) +'px',
-		width: searchIconwi + 'px',
-		height: '44px',
-		position: 'dock' //此种停靠方式表明该控件应浮在窗口最上层，以免被其他窗口遮住
-	}, [{
+	},{
 		tag: 'font',
-		id: 'searchIconT',
+		id: 'topbar_search_icon',
 		text: '\ue631',
 		position: {
 			top: '0px',
-			left: '0px',
-			width: '20px',
+			left: '10px',
+			width: '25px',
 			height: '100%'
 		},
 		textStyles: {
 			fontSrc: '_www/fonts/iconfont.ttf',
 			align: 'center',
 			color: '#707070',
-			size: '14px'
+			size: '12px',
 		}
 	},{
 		tag: 'font',
-		id: 'searchKey',
-		text: '输入关键字...',
+		id: 'topbar_search_text',
+		text: '请输入关键字',
 		position: {
 			top: '0px',
-			left: '22px',
-			width: '80px',
+			left: '20px',
+			width: '100px',
 			height: '100%'
 		},
 		textStyles: {
 			fontSrc: '_www/fonts/iconfont.ttf',
 			align: 'center',
-			color: '#000',
-			size: '14px'
+			color: '#707070',
+			size: '12px',
 		}
 	}]);
-	//绘制右上角更多菜单图标
-	var plusNativeIcon = util.drawNative('plusIcon', {
-		top: topoffset,
-		right: '20px',
-		width: '30px',
+	var topbar_plus = util.drawNative('topbar_plus', {
+		top: topoffset +'px',
+		right: '5px',
+		width: '55px',
 		height: '44px',
 		position: 'dock' //此种停靠方式表明该控件应浮在窗口最上层，以免被其他窗口遮住
-	}, [{
+	},[{
 		tag: 'font',
-		id: 'plusIconT',
+		id: 'topbar_plus_icon',
 		text: '\ue6c9',
 		position: {
 			top: '0px',
-			left: '0px',
-			width: '30px',
+			left: '20px',
+			width: '25px',
 			height: '100%'
 		},
 		textStyles: {
 			fontSrc: '_www/fonts/iconfont.ttf',
 			align: 'center',
 			color: '#fff',
-			size: '26px',
+			size: '24px',
 		}
 	}]);
-	self.append(locationNativeIcon);
-	self.append(searchNativeBg);
-	self.append(searchNativeIcon);
-	self.append(plusNativeIcon);
+	self.append(topbar_location);
+	self.append(topbar_search);
+	self.append(topbar_plus);
 	
-	//自定义监听地址点击事件
-	locationNativeIcon.addEventListener('click', function(e) {
-		
-	});
-	//自定义监听搜索域点击事件
-	searchNativeBg.addEventListener('click', function(e) {
-		
-	});
-	//自定义监听更多图标点击事件
-	plusNativeIcon.addEventListener('click', function(e) {
+	topbar_plus.addEventListener('click', function(e) {
 		mui('#topPopover').popover('toggle');
 	});
+
+    
 	
 	/**	
 	 * drawNativeIconBg 绘制带边框的半圆，

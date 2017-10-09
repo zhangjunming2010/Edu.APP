@@ -8,80 +8,84 @@
 		<script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/util.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/app/index.js" type="text/javascript" charset="utf-8"></script>
-		
+
 		<link href="css/mui.min.css" rel="stylesheet" />
 		<style>
 			html,
 			body {
 				background-color: #efeff4;
 			}
+			
 			.title {
 				margin: 20px 15px 10px;
 				color: #6d6d72;
 				font-size: 15px;
 			}
+			
 			#topPopover {
 				position: fixed;
-				top: 16px;
+				top: 70px;
 				right: 6px;
 			}
+			
 			#topPopover .mui-popover-arrow {
 				left: auto;
 				right: 6px;
 			}
+			
 			.mui-popover {
-				height: 300px;
+				height: 100px;
 			}
 		</style>
 	</head>
 
 	<body>
 		<div class="mui-content">
-			<div id="slider" class="mui-slider" >
-			  <div class="mui-slider-group mui-slider-loop">
-			    <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-			    <div class="mui-slider-item mui-slider-item-duplicate">
-			      <a href="#">
-			        <img src="http://placehold.it/400x300">
-			      </a>
-			    </div>
-			    <!-- 第一张 -->
-			    <div class="mui-slider-item">
-			      <a href="#">
-			        <img src="http://placehold.it/400x300">
-			      </a>
-			    </div>
-			    <!-- 第二张 -->
-			    <div class="mui-slider-item">
-			      <a href="#">
-			        <img src="http://placehold.it/400x300">
-			      </a>
-			    </div>
-			    <!-- 第三张 -->
-			    <div class="mui-slider-item">
-			      <a href="#">
-			        <img src="http://placehold.it/400x300">
-			      </a>
-			    </div>
-			    <!-- 第四张 -->
-			    <div class="mui-slider-item">
-			      <a href="#">
-			        <img src="http://placehold.it/400x300">
-			      </a>
-			    </div>
-			    <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-			    <div class="mui-slider-item mui-slider-item-duplicate">
-			      <a href="#">
-			        <img src="http://placehold.it/400x300">
-			      </a>
-			    </div>
-			  </div>
-			  <div class="mui-slider-indicator">
-			    <div class="mui-indicator mui-active"></div>
-			    <div class="mui-indicator"></div>
-			    <div class="mui-indicator"></div>
-			    <div class="mui-indicator"></div>
-			  </div>
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="http://placehold.it/400x300">
+						</a>
+					</div>
+					<!-- 第一张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="http://placehold.it/400x300">
+						</a>
+					</div>
+					<!-- 第二张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="http://placehold.it/400x300">
+						</a>
+					</div>
+					<!-- 第三张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="http://placehold.it/400x300">
+						</a>
+					</div>
+					<!-- 第四张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="http://placehold.it/400x300">
+						</a>
+					</div>
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="http://placehold.it/400x300">
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
 			</div>
 			<div class="title">
 				<p>这是使用nativeObj 原生控件绘制的底部选项卡示例，当前为父页面，显示第一个tab项内容；</p>
@@ -139,36 +143,20 @@
 				<p>为提高性能，本示例选项卡图标全部使用字体文件绘制（推荐），实际使用中也可以使用图片绘制。</p>
 			</div>
 		</div>
-		
+
 		<div id="topPopover" class="mui-popover">
 			<div class="mui-popover-arrow"></div>
-			<div class="mui-scroll-wrapper">
-				<div class="mui-scroll">
-					<ul class="mui-table-view">
-						<li class="mui-table-view-cell">
-							<a href="#">Item1</a>
-						</li>
-						<li class="mui-table-view-cell"><a href="#">Item2</a>
-						</li>
-						<li class="mui-table-view-cell"><a href="#">Item3</a>
-						</li>
-						<li class="mui-table-view-cell"><a href="#">Item4</a>
-						</li>
-						<li class="mui-table-view-cell"><a href="#">Item5</a>
-						</li>
-						<li class="mui-table-view-cell"><a href="#">Item6</a>
-						</li>
-						<li class="mui-table-view-cell"><a href="#">Item7</a>
-						</li>
-						<li class="mui-table-view-cell"><a href="#">Item8</a>
-						</li>
-						<li class="mui-table-view-cell"><a href="#">Item9</a>
-						</li>
-						<li class="mui-table-view-cell"><a href="#">Item10</a>
-						</li>
-					</ul>
-				</div>
-			</div>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a href="#">Item1</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a href="#">Item2</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a href="#">Item3</a>
+				</li>
+			</ul>
 		</div>
 	</body>
 
