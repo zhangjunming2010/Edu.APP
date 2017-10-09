@@ -1,6 +1,6 @@
 {
 	"@platforms": ["android", "iPhone", "iPad"],
-	"id": "",/*应用的标识，创建应用时自动生成，勿手动修改*/
+	"id": "H519104F0",/*应用的标识，创建应用时自动生成，勿手动修改*/
 	"name": "Edu.APP",/*应用名称，程序桌面图标名称*/
 	"version": {
 		"name": "1.0.0",/*应用版本名称*/
@@ -107,7 +107,7 @@
 		//系统状态栏透明
 		"statusbar": {
 	        "immersed": true
-	   },
+	    },
 		"launchwebview": {
 			"bottom": "0px",
 			"background": "#fff",
