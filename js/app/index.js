@@ -290,6 +290,19 @@ mui.plusReady(function() {
 			}
 
 			if(currIndex !== 3) {
+				if(currIndex == 0){
+					//激活首页显示搜索等绘制图形
+					locationNativeIcon.show();
+					searchNativeBg.show();
+					searchNativeIcon.show();
+					plusNativeIcon.show();
+				}else{
+					//隐藏首页的搜索等绘制图形
+					locationNativeIcon.hide();
+					searchNativeBg.hide();
+					searchNativeIcon.hide();
+					plusNativeIcon.hide();
+				}
 				//底部选项卡切换
 				util.toggleNview(currView, currIndex);
 				// 子页面切换
