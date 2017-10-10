@@ -23,11 +23,11 @@ var util = {
 			subpages = util.options.subpages,
 			self = plus.webview.currentWebview(),
 			temp = {};
-			// 初始化第一个tab项为首次显示
-			temp[self.id] = "true";
-			mui.extend(aniShow, temp);
-			// 初始化绘制首个tab按钮
-			util.toggleNview(self.getStyle().subNViews[0], 0);
+		// 初始化第一个tab项为首次显示
+		temp[self.id] = "true";
+		mui.extend(aniShow, temp);
+		// 初始化绘制首个tab按钮
+		util.toggleNview(self.getStyle().subNViews[0], 0);
 			
 		for(var i = 0, len = subpages.length; i < len; i++) {
 			

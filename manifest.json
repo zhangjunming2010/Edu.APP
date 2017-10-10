@@ -68,7 +68,6 @@
         "Storage": {
             "description": "管理应用本地数据"
         },
-        
         "Uploader": {
             "description": "管理文件上传任务"
         },
@@ -104,10 +103,9 @@
         }
 	},
 	"plus": {
-		//系统状态栏透明
-		"statusbar": {
-	        "immersed": true
-	    },
+		//"statusbar": {
+	    //    "immersed": true
+	    //},
 		"launchwebview": {
 			"bottom": "0px",
 			"background": "#fff",
@@ -398,5 +396,5 @@
 				}
 			}
 		}
-	}
+	},"fullscreen":false
 }

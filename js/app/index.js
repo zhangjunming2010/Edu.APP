@@ -12,10 +12,10 @@ mui.plusReady(function() {
 	
 	//由于采用了系统状态栏沉浸效果需要计算系统状态栏的高度
     var topoffset="45px";
-    if(plus.navigator.isImmersedStatusbar()){// 兼容immersed状态栏模式
-        // 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
-        topoffset=(Math.round(plus.navigator.getStatusbarHeight()))+"px";
-    }
+//  if(plus.navigator.isImmersedStatusbar()){// 兼容immersed状态栏模式
+//      // 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+//      topoffset=(Math.round(plus.navigator.getStatusbarHeight()))+"px";
+//  }
 	//绘制地区按钮及显示
 	var locationNativeIcon = util.drawNative('location', {
 		top: topoffset,
@@ -146,12 +146,12 @@ mui.plusReady(function() {
 			size: '26px',
 		}
 	}]);
-	self.append(locationNativeIcon);
-	self.append(searchNativeBg);
-	self.append(searchNativeIcon);
-	self.append(plusNativeIcon);
+//	self.append(locationNativeIcon);
+//	self.append(searchNativeBg);
+//	self.append(searchNativeIcon);
+//	self.append(plusNativeIcon);
 	
-	//自定义监听地址点击事件
+/*	//自定义监听地址点击事件
 	locationNativeIcon.addEventListener('click', function(e) {
 		
 	});
@@ -162,7 +162,8 @@ mui.plusReady(function() {
 	//自定义监听更多图标点击事件
 	plusNativeIcon.addEventListener('click', function(e) {
 		mui('#topPopover').popover('toggle');
-	});
+		plusNativeIcon.top = '45px';
+	});*/
 	
 	/**	
 	 * drawNativeIconBg 绘制带边框的半圆，
@@ -288,20 +289,23 @@ mui.plusReady(function() {
 			if(targetPage == activePage) {
 				return;
 			}
-
+			
+			
 			if(currIndex !== 3) {
 				if(currIndex == 0){
-					//激活首页显示搜索等绘制图形
-					locationNativeIcon.show();
-					searchNativeBg.show();
-					searchNativeIcon.show();
-					plusNativeIcon.show();
+//					tnviews.show();
+//					//激活首页显示搜索等绘制图形
+//					locationNativeIcon.show();
+//					searchNativeBg.show();
+//					searchNativeIcon.show();
+//					plusNativeIcon.show();
 				}else{
-					//隐藏首页的搜索等绘制图形
-					locationNativeIcon.hide();
-					searchNativeBg.hide();
-					searchNativeIcon.hide();
-					plusNativeIcon.hide();
+//					tnviews.hide();
+//					//隐藏首页的搜索等绘制图形
+//					locationNativeIcon.hide();
+//					searchNativeBg.hide();
+//					searchNativeIcon.hide();
+//					plusNativeIcon.hide();
 				}
 				//底部选项卡切换
 				util.toggleNview(currView, currIndex);
