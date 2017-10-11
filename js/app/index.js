@@ -9,13 +9,29 @@ mui.plusReady(function() {
 		tnviews = self.getTitleNView(),
 		leftPos = Math.ceil((window.innerWidth - 60) / 2); // 设置凸起大图标为水平居中
 		
+	//设置渐变标题栏
+	self.setStyle({
+		titleNView: {
+	        "backgroundColor": "#fff",//导航栏背景色
+	        "titleText": "优乐教育",//导航栏标题
+	        "titleColor": "#000",//文字颜色
+	        "type":"transparent",//透明渐变样式
+	        "autoBackButton": false,//自动绘制返回箭头
+	        "splitLine":{//底部分割线
+	        	"color":"#cccccc"
+			},
+			"tags": {
+				
+			},
+	    }
+	});
 	
 	//由于采用了系统状态栏沉浸效果需要计算系统状态栏的高度
     var topoffset="45px";
-//  if(plus.navigator.isImmersedStatusbar()){// 兼容immersed状态栏模式
-//      // 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
-//      topoffset=(Math.round(plus.navigator.getStatusbarHeight()))+"px";
-//  }
+    if(plus.navigator.isImmersedStatusbar()){// 兼容immersed状态栏模式
+        // 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+        topoffset=(Math.round(plus.navigator.getStatusbarHeight()))+"px";
+    }
 	//绘制地区按钮及显示
 	var locationNativeIcon = util.drawNative('location', {
 		top: topoffset,
@@ -165,6 +181,9 @@ mui.plusReady(function() {
 		plusNativeIcon.top = '45px';
 	});*/
 	
+	
+	
+	
 	/**	
 	 * drawNativeIconBg 绘制带边框的半圆，
 	 * 实现原理：
@@ -219,7 +238,6 @@ mui.plusReady(function() {
 		width: '50px',
 		height: '51px',
 		position: 'dock' //此种停靠方式表明该控件应浮在窗口最上层，以免被其他窗口遮住
-
 	}, [{
 			tag: 'rect',
 			id: 'iconBg',
@@ -258,28 +276,22 @@ mui.plusReady(function() {
 
 	//自定义监听扫一扫图标点击事件
 	drawNativeIcon.addEventListener('click', function(e) {
-		plus.webview.open('html/barcode_scan.html', 'new', {}, 'slide-in-right', 200);
+		plus.webview.open('html/barcode_scan.html', 'scan', {}, 'slide-in-right', 200);
 	});
 
 	//创建子webview窗口 并初始化
-	util.initSubpage();
+	util.initSubpage(topoffset);
+	
 	var activePage = plus.webview.currentWebview();
 
-	//fixed 是否添加titleNView
-	if(self.getTitleNView()) {
-		indexNum = 1
-	} else {
-		indexNum = 0
-	}
-
 	//给每个view 添加监听点击切换
-	for(var i = 0 + indexNum; i < (4 + indexNum); i++) {
+	for(var i = 0; i < nviews.length; i++) {
 		nviews[i].addEventListener('click', function(e) {
 			var currId = e.target.id,
 				currIndex = parseInt(currId.substr(currId.length - 1, 1) - 1),
 				currView = self.getStyle().subNViews[currIndex];
 
-			// 匹配对应tab窗口	
+			// 匹配对应tab窗口
 			if(currIndex > 0) {
 				targetPage = plus.webview.getWebviewById(subpages[currIndex - 1]);
 			} else {
@@ -290,33 +302,15 @@ mui.plusReady(function() {
 				return;
 			}
 			
+			//底部选项卡切换
+			util.toggleNview(currView, currIndex);
+			// 子页面切换
+			util.changeSubpage(targetPage, activePage);
+			//更改当前活跃的页面
+			activePage = targetPage;
 			
-			if(currIndex !== 3) {
-				if(currIndex == 0){
-//					tnviews.show();
-//					//激活首页显示搜索等绘制图形
-//					locationNativeIcon.show();
-//					searchNativeBg.show();
-//					searchNativeIcon.show();
-//					plusNativeIcon.show();
-				}else{
-//					tnviews.hide();
-//					//隐藏首页的搜索等绘制图形
-//					locationNativeIcon.hide();
-//					searchNativeBg.hide();
-//					searchNativeIcon.hide();
-//					plusNativeIcon.hide();
-				}
-				//底部选项卡切换
-				util.toggleNview(currView, currIndex);
-				// 子页面切换
-				util.changeSubpage(targetPage, activePage);
-				//更改当前活跃的页面
-				activePage = targetPage;
-			} else {
-				//第四个tab 打开新窗口
-				plus.webview.open('html/new-webview.html', 'new', {}, 'slide-in-right', 200);
-			}
+			plus.webview.open('html/barcode_scan.html', 'scan', {}, 'slide-in-right', 200);
+			
 		}, false);
 	}
 });

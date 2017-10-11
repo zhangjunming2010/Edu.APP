@@ -103,22 +103,12 @@
         }
 	},
 	"plus": {
-		//"statusbar": {
-	    //    "immersed": true
-	    //},
+	    "statusbar": {
+	        "immersed": "supportedDevice"
+	    },
 		"launchwebview": {
 			"bottom": "0px",
 			"background": "#fff",
-			"titleNView": {
-		        "backgroundColor": "#d74b28",//导航栏背景色
-		        "titleText": "优乐教育",//导航栏标题
-		        "titleColor": "#fff",//文字颜色
-		        "type":"transparent",//透明渐变样式
-		        "autoBackButton": false,//自动绘制返回箭头
-		        "splitLine":{//底部分割线
-		            "color":"#cccccc"
-		        }
-		    },
 			"subNViews": [
 				{
 					"id": "tabBar1",
@@ -281,30 +271,6 @@
 							"textStyles": {
 								"align": "center",
 								"size": "10px"
-							}
-						}
-					]
-				}, {
-					"id": "tabBar5",
-					"styles": {
-						"bottom": "50px",
-						"left": "0",
-						"height": "1px",
-						"width": "100%",
-						"backgroundColor": "#ccc"
-					},
-					"tags": [
-						{
-							"tag": "rect",
-							"id": "tabBorder",
-							"position": {
-								"top": "0",
-								"left": "0",
-								"width": "100%",
-								"height": "1px"
-							},
-							"rectStyles": {
-								"color": "#ccc"
 							}
 						}
 					]

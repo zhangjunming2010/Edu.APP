@@ -2,7 +2,7 @@ var util = {
 	options: {
 		active_color:'#d74b28',
 		normal_color:'#000',
-		subpages:['html/tab-webview-subpage-chat.html', 'html/tab-webview-subpage-contact.html']
+		subpages:['html/tab-webview-subpage-chat.html', 'html/tab-webview-subpage-contact.html','html/new-webview.html']
 	},
 	/**
 	 *  简单封装了绘制原生view控件的方法
@@ -15,14 +15,15 @@ var util = {
 	/**
 	 * 初始化首个tab窗口 和 创建子webview窗口 
 	 */
-	initSubpage: function() {
+	initSubpage: function(topoffset) {
 		var subpage_style = {
-				top: '0px',
+				top: topoffset,
 				bottom: '51px'
 			},
 			subpages = util.options.subpages,
 			self = plus.webview.currentWebview(),
 			temp = {};
+		
 		// 初始化第一个tab项为首次显示
 		temp[self.id] = "true";
 		mui.extend(aniShow, temp);
