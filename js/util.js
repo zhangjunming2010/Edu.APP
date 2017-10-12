@@ -18,7 +18,14 @@ var util = {
 	initSubpage: function(topoffset) {
 		var subpage_style = {
 				top: topoffset,
-				bottom: '51px'
+				bottom: '51px',
+				titleNView: {
+					splitLine:{
+						color: '#ccc'
+					},
+					backgroundColor: '#d74b28',
+					titleColor: '#fff'
+				}
 			},
 			subpages = util.options.subpages,
 			self = plus.webview.currentWebview(),

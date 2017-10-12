@@ -8,62 +8,52 @@ mui.plusReady(function() {
 		subpages = util.options.subpages,
 		tnviews = self.getTitleNView(),
 		leftPos = Math.ceil((window.innerWidth - 60) / 2); // 设置凸起大图标为水平居中
-		
-	//设置渐变标题栏
-	self.setStyle({
-		titleNView: {
-	        "backgroundColor": "#fff",//导航栏背景色
-	        "titleText": "优乐教育",//导航栏标题
-	        "titleColor": "#000",//文字颜色
-	        "type":"transparent",//透明渐变样式
-	        "autoBackButton": false,//自动绘制返回箭头
-	        "splitLine":{//底部分割线
-	        	"color":"#cccccc"
-			},
-			"tags": {
-				
-			},
-	    }
+	
+	
+	//初始化轮播组件
+	var gallery = mui('.mui-slider');
+	gallery.slider({
+	  interval:5000//自动轮播周期，若为0则不自动播放，默认为0；
 	});
 	
+	var topoffset="0px";
 	//由于采用了系统状态栏沉浸效果需要计算系统状态栏的高度
-    var topoffset="45px";
     if(plus.navigator.isImmersedStatusbar()){// 兼容immersed状态栏模式
         // 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
         topoffset=(Math.round(plus.navigator.getStatusbarHeight()))+"px";
     }
-	//绘制地区按钮及显示
-	var locationNativeIcon = util.drawNative('location', {
+    
+    //绘制城市选择控件
+    var locationNv = util.drawNative('locationNv', {
 		top: topoffset,
 		left: '5px',
 		width: '80px',
-		height: '44px',
-		position: 'dock' //此种停靠方式表明该控件应浮在窗口最上层，以免被其他窗口遮住
-
+		height: '45px',
+		position: 'dock'
 	}, [{
 		tag: 'font',
-		id: 'locationicontext',
-		text: '重庆',
+		id: 'locationNv1',
+		text: '重庆市',
 		position: {
 			top: '0px',
-			left: '5px',
-			width: '50px',
+			left: '0px',
+			width: '60px',
 			height: '100%'
 		},
 		textStyles: {
 			fontSrc: '_www/fonts/iconfont.ttf',
 			align: 'center',
 			color: '#fff',
-			size: '14px',
+			size: '15px',
 			weight: 'bold'
 		}
 	},{
 		tag: 'font',
-		id: 'locationicon',
+		id: 'locationNv2',
 		text: '\ue7a2',
 		position: {
 			top: '0px',
-			left: '50px',
+			left: '55px',
 			width: '20px',
 			height: '100%'
 		},
@@ -71,22 +61,25 @@ mui.plusReady(function() {
 			fontSrc: '_www/fonts/iconfont.ttf',
 			align: 'center',
 			color: '#fff',
-			size: '12px'
+			size: '14px'
 		}
 	}]);
-	searchIconwi = window.innerWidth - 200;
-	leftoffset = searchIconwi / 2;
-	//绘制搜索框输入框体
-	var searchNativeBg = util.drawNative('search', {
+	
+	self.append(locationNv);
+	
+	//绘制搜索条控件
+    var searchBgW = (window.innerWidth - 170) + 'px';
+    var searchKeyW = (window.innerWidth - 170 - 25) + 'px';
+    var searchNv = util.drawNative('searchNv', {
 		top: topoffset,
-		left: leftoffset,
-		width: searchIconwi + 'px',
-		height: '44px',
-		position: 'dock' //此种停靠方式表明该控件应浮在窗口最上层，以免被其他窗口遮住
-
+		left: '95px',
+		right: '5px',
+		width: searchBgW,
+		height: '45px',
+		position: 'dock'
 	}, [{
 		tag: 'rect',
-		id: 'searchBg',
+		id: 'searchNv1',
 		position: {
 			top: '8px',
 			left: '0px',
@@ -97,21 +90,13 @@ mui.plusReady(function() {
 			color: '#fff',
 			radius: '50%'
 		}
-	}]);
-	//绘制搜索框搜索样式图标
-	var searchNativeIcon = util.drawNative('searchIcon', {
-		top: topoffset,
-		left: (leftoffset + 5 ) +'px',
-		width: searchIconwi + 'px',
-		height: '44px',
-		position: 'dock' //此种停靠方式表明该控件应浮在窗口最上层，以免被其他窗口遮住
-	}, [{
+	},{
 		tag: 'font',
-		id: 'searchIconT',
+		id: 'searchNv2',
 		text: '\ue631',
 		position: {
 			top: '0px',
-			left: '0px',
+			left: '5px',
 			width: '20px',
 			height: '100%'
 		},
@@ -123,66 +108,51 @@ mui.plusReady(function() {
 		}
 	},{
 		tag: 'font',
-		id: 'searchKey',
+		id: 'searchNv3',
 		text: '输入关键字...',
 		position: {
 			top: '0px',
-			left: '22px',
-			width: '80px',
+			left: '25px',
+			width: searchKeyW,
 			height: '100%'
 		},
 		textStyles: {
 			fontSrc: '_www/fonts/iconfont.ttf',
-			align: 'center',
-			color: '#000',
+			align: 'left',
+			color: '#707070',
 			size: '14px'
 		}
 	}]);
-	//绘制右上角更多菜单图标
-	var plusNativeIcon = util.drawNative('plusIcon', {
+    
+    self.append(searchNv);
+	
+	//绘制消息控件
+	var messageNv = util.drawNative('messageNv', {
 		top: topoffset,
-		right: '20px',
-		width: '30px',
-		height: '44px',
-		position: 'dock' //此种停靠方式表明该控件应浮在窗口最上层，以免被其他窗口遮住
+		right: '5px',
+		width: '80px',
+		height: '45px',
+		position: 'dock'
 	}, [{
 		tag: 'font',
-		id: 'plusIconT',
-		text: '\ue6c9',
+		id: 'messageNv1',
+		text: '\ue621',
 		position: {
 			top: '0px',
 			left: '0px',
-			width: '30px',
+			width: '100%',
 			height: '100%'
 		},
 		textStyles: {
 			fontSrc: '_www/fonts/iconfont.ttf',
 			align: 'center',
 			color: '#fff',
-			size: '26px',
+			size: '22px',
+			verticalAlign: 'middle'
 		}
 	}]);
-//	self.append(locationNativeIcon);
-//	self.append(searchNativeBg);
-//	self.append(searchNativeIcon);
-//	self.append(plusNativeIcon);
 	
-/*	//自定义监听地址点击事件
-	locationNativeIcon.addEventListener('click', function(e) {
-		
-	});
-	//自定义监听搜索域点击事件
-	searchNativeBg.addEventListener('click', function(e) {
-		
-	});
-	//自定义监听更多图标点击事件
-	plusNativeIcon.addEventListener('click', function(e) {
-		mui('#topPopover').popover('toggle');
-		plusNativeIcon.top = '45px';
-	});*/
-	
-	
-	
+	self.append(messageNv);
 	
 	/**	
 	 * drawNativeIconBg 绘制带边框的半圆，
@@ -191,7 +161,7 @@ mui.plusReady(function() {
 	 *   id为bg2的tag 创建白色矩形遮住圆下半部分，只显示凸起带边框部分
 	 *   注意创建先后顺序，创建越晚的层级越高
 	 */
-	var drawNativeIconBg = util.drawNative('iconBg', {
+	var scanNv = util.drawNative('scanNv', {
 		bottom: '5px',
 		left: leftPos + 'px',
 		width: '60px',
@@ -199,7 +169,7 @@ mui.plusReady(function() {
 		position: 'dock'
 	}, [{
 		tag: 'rect',
-		id: 'bg',
+		id: 'scanNv1',
 		position: {
 			top: '1px',
 			left: '0px',
@@ -214,7 +184,7 @@ mui.plusReady(function() {
 		}
 	}, {
 		tag: 'rect',
-		id: 'bg2',
+		id: 'scanNv2',
 		position: {
 			bottom: '-0.5px',
 			left: '0px',
@@ -232,7 +202,7 @@ mui.plusReady(function() {
 	 * 	id为icon的字体图标
 	 * 	
 	 */
-	var drawNativeIcon = util.drawNative('tabIcon', {
+	var scanNvIcon = util.drawNative('scanNvIcon', {
 		bottom: '10px',
 		left: leftPos + 5 + 'px',
 		width: '50px',
@@ -240,7 +210,7 @@ mui.plusReady(function() {
 		position: 'dock' //此种停靠方式表明该控件应浮在窗口最上层，以免被其他窗口遮住
 	}, [{
 			tag: 'rect',
-			id: 'iconBg',
+			id: 'scanNvIcon1',
 			position: {
 				top: '0px',
 				left: '0px',
@@ -254,7 +224,7 @@ mui.plusReady(function() {
 		},
 		{
 			tag: 'font',
-			id: 'scan',
+			id: 'scanNvIcon2',
 			text: '\ue654', //此为字体图标Unicode码'\e600'转换为'\ue600'
 			position: {
 				top: '0px',
@@ -271,17 +241,18 @@ mui.plusReady(function() {
 		}
 	]);
 	// append 到父webview中
-	self.append(drawNativeIconBg);
-	self.append(drawNativeIcon);
+	self.append(scanNv);
+	self.append(scanNvIcon);
 
 	//自定义监听扫一扫图标点击事件
-	drawNativeIcon.addEventListener('click', function(e) {
-		plus.webview.open('html/barcode_scan.html', 'scan', {}, 'slide-in-right', 200);
+	scanNvIcon.addEventListener('click', function(e) {
+		var scanWV = plus.webview.create('html/barcode_scan.html', 'scan');
+		scanWV.show('slide-in-right', 200);
 	});
 
 	//创建子webview窗口 并初始化
 	util.initSubpage(topoffset);
-	
+
 	var activePage = plus.webview.currentWebview();
 
 	//给每个view 添加监听点击切换
@@ -301,7 +272,7 @@ mui.plusReady(function() {
 			if(targetPage == activePage) {
 				return;
 			}
-			
+
 			//底部选项卡切换
 			util.toggleNview(currView, currIndex);
 			// 子页面切换
@@ -309,8 +280,18 @@ mui.plusReady(function() {
 			//更改当前活跃的页面
 			activePage = targetPage;
 			
-			plus.webview.open('html/barcode_scan.html', 'scan', {}, 'slide-in-right', 200);
-			
+			if(currIndex !== 0){
+				locationNv.hide();
+				searchNv.hide();
+				messageNv.hide();
+				plus.navigator.setStatusBarBackground('#d74b28');
+			}else{
+				locationNv.show();
+				searchNv.show();
+				messageNv.show();
+			}
+
+
 		}, false);
 	}
 });

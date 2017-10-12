@@ -4174,37 +4174,6 @@ body>.mui-progressbar {
 	margin: 2px 8px
 }
 
-@font-face {
-	font-family: "iconfont";
-	font-weight: 400;
-	font-style: normal;
-	src: url('../fonts/iconfont.ttf') format('truetype');
-}
-
-.iconfont {
-	font-family: "iconfont" !important;
-	font-size: 24px;
-	font-weight: 400;
-	font-style: normal;
-	line-height: 1;
-	display: inline-block;
-	text-decoration: none;
-	-webkit-font-smoothing: antialiased;
-}
-
-.icon-wode:before { content: "\e61b"; }
-
-.icon-fujin:before { content: "\e603"; }
-
-.icon-dingdan:before { content: "\e615"; }
-
-.icon-shouye:before { content: "\e607"; }
-
-.icon-lianmeng:before { content: "\e623"; }
-
-.icon-saoyisao:before { content: "\e654"; }
-
-.icon-saoyisao1:before { content: "\e758"; }
 
 @font-face {
 	font-family: Muiicons;
