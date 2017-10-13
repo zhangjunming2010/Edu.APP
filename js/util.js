@@ -19,13 +19,6 @@ var util = {
 		var subpage_style = {
 				top: topoffset,
 				bottom: '51px',
-				titleNView: {
-					splitLine:{
-						color: '#ccc'
-					},
-					backgroundColor: '#d74b28',
-					titleColor: '#fff'
-				}
 			},
 			subpages = util.options.subpages,
 			self = plus.webview.currentWebview(),
@@ -37,7 +30,7 @@ var util = {
 		// 初始化绘制首个tab按钮
 		util.toggleNview(self.getStyle().subNViews[0], 0);
 			
-		for(var i = 0, len = subpages.length; i < len; i++) {
+		/*for(var i = 0, len = subpages.length; i < len; i++) {
 			
 			if(!plus.webview.getWebviewById(subpages[i])) {
 				var sub = plus.webview.create(subpages[i], subpages[i], subpage_style);
@@ -46,12 +39,12 @@ var util = {
 				// append到当前父webview
 				self.append(sub);
 			}
-		}
+		}*/
 	},
 	/**	
 	 * 点击切换tab窗口 
 	 */
-	changeSubpage: function(targetPage, activePage) {
+	changeSubpage: function(currIndex, activePage) {
 		//若为iOS平台或非首次显示，则直接显示
 		if(mui.os.ios || aniShow[targetPage]) {
 			plus.webview.show(targetPage);
@@ -60,6 +53,7 @@ var util = {
 			var temp = {};
 			temp[targetPage] = "true";
 			mui.extend(aniShow, temp);
+			
 			plus.webview.show(targetPage, "fade-in", 300);
 		}
 		//隐藏当前 除了第一个父窗口

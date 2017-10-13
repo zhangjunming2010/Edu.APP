@@ -8,8 +8,8 @@ mui.plusReady(function() {
 		subpages = util.options.subpages,
 		tnviews = self.getTitleNView(),
 		leftPos = Math.ceil((window.innerWidth - 60) / 2); // 设置凸起大图标为水平居中
-	
-	
+	var a = plus.webview.getLaunchWebview();
+	console.log(JSON.stringify(a));
 	//初始化轮播组件
 	var gallery = mui('.mui-slider');
 	gallery.slider({
@@ -280,18 +280,18 @@ mui.plusReady(function() {
 			//更改当前活跃的页面
 			activePage = targetPage;
 			
-			if(currIndex !== 0){
-				locationNv.hide();
-				searchNv.hide();
-				messageNv.hide();
-				plus.navigator.setStatusBarBackground('#d74b28');
-			}else{
-				locationNv.show();
-				searchNv.show();
-				messageNv.show();
-			}
-
-
+//			if(currIndex !== 0){
+//				plus.navigator.setStatusBarBackground('#FF0000');
+//				tnviews.hide();
+//				locationNv.hide();
+//				searchNv.hide();
+//				messageNv.hide();
+//			}else{
+//				tnviews.show();
+//				locationNv.show();
+//				searchNv.show();
+//				messageNv.show();
+//			}
 		}, false);
 	}
 });

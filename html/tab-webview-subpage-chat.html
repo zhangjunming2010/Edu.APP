@@ -21,6 +21,14 @@
 				background-color: #fff;
 			}
 		</style>
+		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function () {
+				var a = plus.webview.getLaunchWebview();
+				console.log(JSON.stringify(a));
+			})
+		</script>
 	</head>
 
 	<body>
