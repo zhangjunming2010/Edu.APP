@@ -2,7 +2,7 @@ var util = {
 	options: {
 		active_color:'#17abe3',
 		normal_color:'#707070',
-		subpages:['html/tab-webview-subpage-chat.html', 'html/tab-webview-subpage-contact.html','html/new-webview.html']
+		subpages:['html/nearby.html', 'html/tab-webview-subpage-contact.html','html/new-webview.html']
 	},
 	/**
 	 *  简单封装了绘制原生view控件的方法
