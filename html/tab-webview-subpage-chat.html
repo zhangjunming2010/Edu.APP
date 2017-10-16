@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Hello MUI</title>
+		<title></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -25,13 +25,32 @@
 		<script type="text/javascript">
 			mui.init();
 			mui.plusReady(function () {
-				var a = plus.webview.getLaunchWebview();
-				console.log(JSON.stringify(a));
-			})
+				
+				var self = plus.webview.currentWebview();
+				
+				var statusbarH = 45;
+				//由于采用了系统状态栏沉浸效果需要计算系统状态栏的高度
+			    if(plus.navigator.isImmersedStatusbar()){// 兼容immersed状态栏模式
+			        // 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+			        statusbarH=(Math.round(plus.navigator.getStatusbarHeight()));
+			    }
+				
+				var topoffset= (statusbarH + 30) + "px";
+				
+				self.setPullToRefresh({
+					support: true,
+					offset: topoffset,
+					style: 'circle',
+					color: '#17abe3'
+				});
+			});
 		</script>
 	</head>
 
 	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <h1 class="mui-title">标题</h1>
+		</header>
 		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
 			<div class="mui-scroll">
 				<div class="title">

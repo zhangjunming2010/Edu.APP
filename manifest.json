@@ -103,18 +103,14 @@
         }
 	},
 	"plus": {
-	    "statusbar": {
-	    	"style": "dark",
-	        "immersed": true
+		"statusbar": {
+	        "immersed": true,
+	        "background": "#fff"
 	    },
 		"launchwebview": {
 			"bottom": "0px",
-			"background": "#fff",
 			"titleNView": {
-				"splitLine":{
-					"color": "#ccc"
-				},
-				"backgroundColor": "#d74b28",
+				"backgroundColor": "#17abe3",
 				"titleColor": "#fff",
 				"type": "transparent"
 			},
@@ -393,7 +389,7 @@
 					"xhdpi": "", /*720P高分屏启动图片，分辨率：720x1242*/
 					"xxhdpi": ""
 				}
-			}
+			},"debug":false
 		}
 	},"fullscreen":false
 }

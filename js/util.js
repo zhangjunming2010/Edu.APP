@@ -1,7 +1,7 @@
 var util = {
 	options: {
-		active_color:'#d74b28',
-		normal_color:'#000',
+		active_color:'#17abe3',
+		normal_color:'#707070',
 		subpages:['html/tab-webview-subpage-chat.html', 'html/tab-webview-subpage-contact.html','html/new-webview.html']
 	},
 	/**
@@ -17,8 +17,20 @@ var util = {
 	 */
 	initSubpage: function(topoffset) {
 		var subpage_style = {
-				top: topoffset,
+				top: '0px',
 				bottom: '51px',
+				statusbar: {
+					background:'#17abe3'
+				},
+				scrollIndicator: 'none',
+				titleNView:{
+					splitLine:{
+						color: '#17abe3',
+						height: '0px'
+					},
+					backgroundColor:'#17abe3',
+					height: topoffset
+				}
 			},
 			subpages = util.options.subpages,
 			self = plus.webview.currentWebview(),
@@ -30,7 +42,7 @@ var util = {
 		// 初始化绘制首个tab按钮
 		util.toggleNview(self.getStyle().subNViews[0], 0);
 			
-		/*for(var i = 0, len = subpages.length; i < len; i++) {
+		for(var i = 0, len = subpages.length; i < len; i++) {
 			
 			if(!plus.webview.getWebviewById(subpages[i])) {
 				var sub = plus.webview.create(subpages[i], subpages[i], subpage_style);
@@ -39,7 +51,7 @@ var util = {
 				// append到当前父webview
 				self.append(sub);
 			}
-		}*/
+		}
 	},
 	/**	
 	 * 点击切换tab窗口 

@@ -8,87 +8,53 @@ mui.plusReady(function() {
 		subpages = util.options.subpages,
 		tnviews = self.getTitleNView(),
 		leftPos = Math.ceil((window.innerWidth - 60) / 2); // 设置凸起大图标为水平居中
-	var a = plus.webview.getLaunchWebview();
-	console.log(JSON.stringify(a));
+	
+	//系统状态栏前景色设置为白色（字体颜色为白色）
+	plus.navigator.setStatusBarStyle('light');
+	
+	//取消首页滚动条显示
+	self.setStyle({
+		scrollIndicator: 'none'
+	});
+	
 	//初始化轮播组件
 	var gallery = mui('.mui-slider');
 	gallery.slider({
 	  interval:5000//自动轮播周期，若为0则不自动播放，默认为0；
 	});
 	
-	var topoffset="0px";
+	
+	var statusbarH = 45;
 	//由于采用了系统状态栏沉浸效果需要计算系统状态栏的高度
     if(plus.navigator.isImmersedStatusbar()){// 兼容immersed状态栏模式
         // 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
-        topoffset=(Math.round(plus.navigator.getStatusbarHeight()))+"px";
+        statusbarH=(Math.round(plus.navigator.getStatusbarHeight()));
     }
-    
-    //绘制城市选择控件
-    var locationNv = util.drawNative('locationNv', {
-		top: topoffset,
-		left: '5px',
-		width: '80px',
-		height: '45px',
-		position: 'dock'
-	}, [{
-		tag: 'font',
-		id: 'locationNv1',
-		text: '重庆市',
-		position: {
-			top: '0px',
-			left: '0px',
-			width: '60px',
-			height: '100%'
-		},
-		textStyles: {
-			fontSrc: '_www/fonts/iconfont.ttf',
-			align: 'center',
-			color: '#fff',
-			size: '15px',
-			weight: 'bold'
-		}
-	},{
-		tag: 'font',
-		id: 'locationNv2',
-		text: '\ue7a2',
-		position: {
-			top: '0px',
-			left: '55px',
-			width: '20px',
-			height: '100%'
-		},
-		textStyles: {
-			fontSrc: '_www/fonts/iconfont.ttf',
-			align: 'center',
-			color: '#fff',
-			size: '14px'
-		}
-	}]);
 	
-	self.append(locationNv);
+	var topoffset= statusbarH + "px";
 	
 	//绘制搜索条控件
-    var searchBgW = (window.innerWidth - 170) + 'px';
-    var searchKeyW = (window.innerWidth - 170 - 25) + 'px';
+    var searchBgW = (window.innerWidth - 100) + 'px';
+    var searchKeyW = (window.innerWidth - 100 - 25) + 'px';
     var searchNv = util.drawNative('searchNv', {
-		top: topoffset,
-		left: '95px',
-		right: '5px',
+		top: (statusbarH + 5 ) + 'px',
+		left: '50px',
+		right: '50px',
 		width: searchBgW,
-		height: '45px',
+		height: '30px',
 		position: 'dock'
 	}, [{
 		tag: 'rect',
 		id: 'searchNv1',
 		position: {
-			top: '8px',
+			top: '0px',
 			left: '0px',
 			width: '100%',
-			height: '28px'
+			height: '100%'
 		},
 		rectStyles: {
 			color: '#fff',
-			radius: '50%'
+			radius: '20%'
 		}
 	},{
 		tag: 'font',
@@ -103,7 +69,7 @@ mui.plusReady(function() {
 		textStyles: {
 			fontSrc: '_www/fonts/iconfont.ttf',
 			align: 'center',
-			color: '#707070',
+			color: '#17abe3',
 			size: '14px'
 		}
 	},{
@@ -126,33 +92,6 @@ mui.plusReady(function() {
     
     self.append(searchNv);
 	
-	//绘制消息控件
-	var messageNv = util.drawNative('messageNv', {
-		top: topoffset,
-		right: '5px',
-		width: '80px',
-		height: '45px',
-		position: 'dock'
-	}, [{
-		tag: 'font',
-		id: 'messageNv1',
-		text: '\ue621',
-		position: {
-			top: '0px',
-			left: '0px',
-			width: '100%',
-			height: '100%'
-		},
-		textStyles: {
-			fontSrc: '_www/fonts/iconfont.ttf',
-			align: 'center',
-			color: '#fff',
-			size: '22px',
-			verticalAlign: 'middle'
-		}
-	}]);
-	
-	self.append(messageNv);
 	
 	/**	
 	 * drawNativeIconBg 绘制带边框的半圆，
@@ -218,7 +157,7 @@ mui.plusReady(function() {
 				height: '50px'
 			},
 			rectStyles: {
-				color: '#d74b28',
+				color: '#17abe3',
 				radius: '50%'
 			}
 		},
@@ -280,18 +219,13 @@ mui.plusReady(function() {
 			//更改当前活跃的页面
 			activePage = targetPage;
 			
-//			if(currIndex !== 0){
-//				plus.navigator.setStatusBarBackground('#FF0000');
-//				tnviews.hide();
-//				locationNv.hide();
-//				searchNv.hide();
-//				messageNv.hide();
-//			}else{
-//				tnviews.show();
-//				locationNv.show();
-//				searchNv.show();
-//				messageNv.show();
-//			}
+			if(currIndex !== 0){
+				tnviews.hide();
+				searchNv.hide();
+			}else{
+				tnviews.show();
+				searchNv.show();
+			}
 		}, false);
 	}
 });
