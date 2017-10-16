@@ -24,7 +24,7 @@ mui.plusReady(function() {
 	});
 	
 	
-	var statusbarH = 45;
+	var statusbarH = 44;
 	//由于采用了系统状态栏沉浸效果需要计算系统状态栏的高度
     if(plus.navigator.isImmersedStatusbar()){// 兼容immersed状态栏模式
         // 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
@@ -190,7 +190,7 @@ mui.plusReady(function() {
 	});
 
 	//创建子webview窗口 并初始化
-	util.initSubpage(topoffset);
+	util.initSubpage(statusbarH);
 
 	var activePage = plus.webview.currentWebview();
 

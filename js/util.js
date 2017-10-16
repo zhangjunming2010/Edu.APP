@@ -15,7 +15,7 @@ var util = {
 	/**
 	 * 初始化首个tab窗口 和 创建子webview窗口 
 	 */
-	initSubpage: function(topoffset) {
+	initSubpage: function(statusbarH) {
 		var subpage_style = {
 				top: '0px',
 				bottom: '51px',
@@ -29,7 +29,9 @@ var util = {
 						height: '0px'
 					},
 					backgroundColor:'#17abe3',
-					height: topoffset
+					height: (statusbarH + 44) + 'px',
+					coverage: '0px',
+					type: 'default'
 				}
 			},
 			subpages = util.options.subpages,

@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-
+		<script src="../js/util.js" type="text/javascript" charset="utf-8"></script>
 		<link rel="stylesheet" href="../css/mui.min.css">
 		<style>
 			html,body {
@@ -44,6 +44,59 @@
 				float: left;
 			}
 		</style>
+		<script src="../js/mui.min.js"></script>
+		<script>
+			mui.init({
+				swipeBack:true //启用右滑关闭功能
+			});
+		</script>
+		<script type="text/javascript">
+			mui.plusReady(function () {
+				var self = plus.webview.currentWebview();
+			    
+				self.setPullToRefresh({
+					support: true,
+					offset: '0px',
+					style: 'circle',
+					color: '#17abe3'
+				});
+				
+				var statusbarH = 44;
+				//由于采用了系统状态栏沉浸效果需要计算系统状态栏的高度
+			    if(plus.navigator.isImmersedStatusbar()){// 兼容immersed状态栏模式
+			        // 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+			        statusbarH=(Math.round(plus.navigator.getStatusbarHeight()));
+			    }
+				
+				var titleNv = util.drawNative('titleNv', {
+					top: (statusbarH + 5 ) + 'px',
+					left: '0px',
+					right: '0px',
+					width: '100%',
+					height: '44px',
+					position: 'dock'
+				}, [{
+					tag: 'font',
+					id: 'titleNv1',
+					text: '订单',
+					position: {
+						top: '0px',
+						left: '0px',
+						width: '100%',
+						height: '100%'
+					},
+					textStyles: {
+						fontSrc: '_www/fonts/iconfont.ttf',
+						align: 'center',
+						color: '#fff',
+						size: '16px',
+						weight: 'bold'
+					}
+				}]);
+			    
+			    self.append(titleNv);
+			});
+		</script>
 	</head>
 
 	<body>
@@ -146,10 +199,4 @@
 			</ul>
 		</div>
 	</body>
-	<script src="../js/mui.min.js"></script>
-	<script>
-		mui.init({
-			swipeBack:true //启用右滑关闭功能
-		});
-	</script>
 </html>
