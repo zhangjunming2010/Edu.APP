@@ -1,5 +1,6 @@
 mui.init({
 	swipeBack: false,
+	
 });
 
 mui.plusReady(function() {
@@ -54,125 +55,27 @@ mui.plusReady(function() {
 			size: '16px',
 		}
 	}]);
-
 	self.append(locationNv);
-
-	//幼教tab
-	var babyNv = util.drawNative('babyNv', {
-		top: (statusbarH + 44) + 'px',
-		left: '0px',
-		right: '0px',
-		width: '26%',
-		height: '36px',
-		position: 'dock'
-	}, [{
-		tag: 'font',
-		id: 'babyNv1',
-		text: '幼教',
-		position: {
-			width: '100%',
-			height: '100%'
-		},
-		textStyles: {
-			fontSrc: '_www/fonts/iconfont.ttf',
-			align: 'center',
-			color: '#17abe3',
-			size: '16px',
-		}
-	}, {
-		tag: 'rect',
-		id: 'babyNv2',
-		position: {
-			bottom: '0',
-			width: '100%',
-			height: '2px'
-		},
-		rectStyles: {
-			color: '#17abe3'
-		}
-	}]);
-//	self.append(babyNv);
-
-	//小学tab
-	var primaryNv = util.drawNative('primaryNv', {
-		top: (statusbarH + 44) + 'px',
-		left: '26%',
-		width: '26%',
-		height: '36px',
-		position: 'dock'
-	}, [{
-		tag: 'font',
-		id: 'primaryNv1',
-		text: '小学',
-		position: {
-			width: '100%',
-			height: '100%'
-		},
-		textStyles: {
-			fontSrc: '_www/fonts/iconfont.ttf',
-			align: 'center',
-			color: '#707070',
-			size: '16px',
-		}
-	}]);
-//	self.append(primaryNv);
-
-	//初中tab
-	var juniorNv = util.drawNative('juniorNv', {
-		top: (statusbarH + 44) + 'px',
-		left: '52%',
-		width: '26%',
-		height: '36px',
-		position: 'dock'
-	}, [{
-		tag: 'font',
-		id: 'juniorNv1',
-		text: '初中',
-		position: {
-			width: '100%',
-			height: '100%'
-		},
-		textStyles: {
-			fontSrc: '_www/fonts/iconfont.ttf',
-			align: 'center',
-			color: '#707070',
-			size: '16px',
-		}
-	}]);
-//	self.append(juniorNv);
-
-	//tab
-	var allNv = util.drawNative('allNv', {
-		top: (statusbarH + 44) + 'px',
-		left: '78%',
-		width: '26%',
-		height: '36px',
-		position: 'dock'
-	}, [{
-		tag: 'font',
-		id: 'allNv1',
-		text: '全部',
-		position: {
-			width: '100%',
-			height: '100%'
-		},
-		textStyles: {
-			fontSrc: '_www/fonts/iconfont.ttf',
-			align: 'center',
-			color: '#707070',
-			size: '16px',
-		}
-	}]);
-//	self.append(allNv);
 	
-	var tabIndex = 0;
-
 	//添加左右切换tab功能
+	var tabIndex = 0;
 	document.addEventListener("swipeleft", function() {
-		mui('#tabs div')
+		if(tabIndex < mui('#tabs div').length - 1){
+			mui('#tabs div').each(function(){
+				this.className = 'mui-col-sm-3 mui-col-xs-3';
+			});
+			mui('#tabs div')[tabIndex + 1].className = 'mui-col-sm-3 mui-col-xs-3 active';
+			tabIndex ++ ;
+		}
 	});
 	document.addEventListener("swiperight", function() {
-		
+		if(tabIndex > 0){
+			mui('#tabs div').each(function(){
+				this.className = 'mui-col-sm-3 mui-col-xs-3';
+			});
+			mui('#tabs div')[tabIndex - 1].className = 'mui-col-sm-3 mui-col-xs-3 active';
+			tabIndex -- ;
+		}
 	});
 
 });
