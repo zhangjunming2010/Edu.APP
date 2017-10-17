@@ -85,7 +85,6 @@ var util = {
 		// 重绘兄弟nview
 		for(var i = 0; i < 4; i++) {
 			var viewObj = self.getStyle().subNViews[i];
-
 			if(i !== currIndex) {
 				util.updateSubNView(viewObj,util.options.normal_color);
 			}

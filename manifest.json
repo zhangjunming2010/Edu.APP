@@ -145,7 +145,7 @@
 							"id": "tabBar12",
 							"text": "首页",
 							"position": {
-								"top": "27px",
+								"top": "28px",
 								"left": "0",
 								"width": "100%",
 								"height": "24px"
@@ -186,7 +186,7 @@
 							"id": "tabBar22",
 							"text": "附近",
 							"position": {
-								"top": "27px",
+								"top": "28px",
 								"left": "-20px",
 								"width": "100%",
 								"height": "24px"
@@ -227,7 +227,7 @@
 							"id": "tabBar32",
 							"text": "订单",
 							"position": {
-								"top": "27px",
+								"top": "28px",
 								"left": "20px",
 								"width": "100%",
 								"height": "24px"
@@ -268,7 +268,7 @@
 							"id": "tabBar42",
 							"text": "我的",
 							"position": {
-								"top": "27px",
+								"top": "28px",
 								"left": "0",
 								"width": "100%",
 								"height": "24px"
