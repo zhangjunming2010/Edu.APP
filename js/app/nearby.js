@@ -80,7 +80,7 @@ mui.plusReady(function() {
 	var tabW = (window.innerWidth - 50)/4;
 	var tabH = 29;
 	tabBtnHtml ='<div id="hot" class="mui-row">'+
-						'<button type="button" class="mui-btn mui-btn-grey tab-active" style="width:'+tabW+'px;height:'+tabH+'px;">热门</button>'+
+						'<button type="button" class="mui-btn mui-btn-grey active" style="width:'+tabW+'px;height:'+tabH+'px;">热门</button>'+
 						'<button type="button" class="mui-btn mui-btn-grey" style="width:'+tabW+'px;height:'+tabH+'px;">二级标签</button>'+
 						'<button type="button" class="mui-btn mui-btn-grey" style="width:'+tabW+'px;height:'+tabH+'px;">二级标签</button>'+
 						'<button type="button" class="mui-btn mui-btn-grey" style="width:'+tabW+'px;height:'+tabH+'px;">二级标签</button>'+
