@@ -132,6 +132,7 @@ mui.plusReady(function() {
 			}
 		}
 	});
+	
 	document.addEventListener("swiperight", function() {
 		if(tabIndex > 0){
 			mui('#tabs div').each(function(){
@@ -147,8 +148,14 @@ mui.plusReady(function() {
 			}
 		}
 	});
-
 });
+
+/**
+ * 二级菜单点击
+ */
+function tabClick(){
+	
+}
 
 
 /**
